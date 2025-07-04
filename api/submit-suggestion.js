@@ -10,25 +10,36 @@ export default async function handler(req, res) {
 
     const payload = {
       embeds: [{
-        title: `Nouvelle Suggestion: ${gearName}`,
-        description: gearReason,
-        color: 5800000,
-        fields: [
-          {
-            name: "Catégorie",
-            value: gearCategory,
-            inline: true
-          }
-        ],
-        thumbnail: {
-          url: gearImage
-        },
-        timestamp: new Date().toISOString(),
-        footer: {
-          text: "Suggestion soumise via le site web (via API)"
-        }
-      }]
-    };
+            title: "Nouvelle suggestion de Gear",
+            description: "Une nouvelle suggestion de gear a été soumise !",
+            color: 9063659,
+            fields: [
+              {
+                name: "Nom du Gear",
+                value: gearName,
+                inline: true
+              },
+              {
+                name: "Catégorie",
+                value: gearCategory,
+                inline: true
+              },
+              {
+                name: "Pourquoi l'ajouter",
+                value: gearReason,
+                inline: false
+              }
+            ],
+            thumbnail: {
+              url: gearImage
+            },
+            timestamp: new Date().toISOString(),
+            footer: {
+              text: "Suggestion soumise via le site web"
+            }
+          }]
+        };
+
 
     try {
       const discordResponse = await fetch(webhookUrl, {
