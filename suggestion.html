@@ -201,10 +201,11 @@
     document.getElementById('gearSuggestionForm').addEventListener('submit', async function(event) {
     event.preventDefault();
 
-    const gearName = document.getElementById('gear-name').value;
-    const gearCategory = document.getElementById('gear-category').value;
-    const gearReason = document.getElementById('gear-reason').value;
-    const gearImage = document.getElementById('gear-image').value;
+    const gearName = document.getElementById('gearName').value;
+    const gearCategory = document.getElementById('gearCategory').value;
+    const gearReason = document.getElementById('gearReason').value;
+    const gearImage = document.getElementById('gearImage').value;
+
 
     // ce que le front appel ta mere la pute qui marche pas, vercel de merde
     const apiEndpoint = '/api/submit-suggestion.js';
