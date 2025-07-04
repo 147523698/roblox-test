@@ -1,0 +1,248 @@
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suggestion de Gear - Center French</title>
+    <link rel="icon" href="https://i.imgur.com/tuAjHeg.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;800&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+      :root {
+        --main-color: #5927AA;
+        --main-color-light: #8A4CEB;
+        --main-color-gradient-start: #5927AA;
+        --main-color-gradient-end: #A059FF;
+        --bg-start: #08080d;
+        --bg-end: #101015;
+        --card-bg: rgba(25, 25, 35, 0.7);
+        --border-color: rgba(138, 76, 235, 0.3);
+        --text-light: #E8E8E8;
+        --text-medium: #D0D0D0;
+        --text-dark: #B0B0B0;
+        --text-darker: #909090;
+        --success: #4CAF50;
+        --error: #F44336;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: 'Rajdhani', sans-serif;
+        background: linear-gradient(to bottom, var(--bg-start), var(--bg-end));
+        color: var(--text-light);
+        overflow-x: hidden;
+        line-height: 1.6;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        position: relative;
+      }
+
+      body::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: radial-gradient(circle at top left, rgba(89, 39, 170, 0.1) 0%, transparent 30%),
+                          radial-gradient(circle at bottom right, rgba(160, 89, 255, 0.1) 0%, transparent 30%);
+        background-size: 100% 100%;
+        animation: subtleBackgroundShift 20s infinite alternate ease-in-out;
+        z-index: -1;
+      }
+
+      @keyframes subtleBackgroundShift {
+        0% { background-position: 0% 0%; }
+        100% { background-position: 100% 100%; }
+      }
+
+      .suggestion-form-container {
+        background: var(--card-bg);
+        border: 1px solid var(--border-color);
+        border-radius: 15px;
+        padding: 40px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 40px rgba(160, 89, 255, 0.3);
+        width: 90%;
+        max-width: 500px;
+        animation: fadeIn 0.3s ease-out;
+        margin: 20px auto;
+      }
+
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(-20px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+      .suggestion-form-container h3 {
+        font-family: 'Orbitron', sans-serif;
+        font-size: 28px;
+        color: var(--main-color-light);
+        text-align: center;
+        margin-bottom: 30px;
+        text-shadow: 0 0 10px rgba(160, 89, 255, 0.5);
+      }
+
+      .suggestion-form-container label {
+        display: block;
+        margin-bottom: 8px;
+        color: var(--text-light);
+        font-weight: 600;
+        font-size: 16px;
+      }
+
+      .suggestion-form-container input[type="text"],
+      .suggestion-form-container textarea,
+      .suggestion-form-container select {
+        width: 100%;
+        padding: 12px 15px;
+        margin-bottom: 20px;
+        background: rgba(40, 40, 55, 0.9);
+        border: 1px solid var(--border-color);
+        border-radius: 8px;
+        color: var(--text-light);
+        font-size: 16px;
+        transition: all 0.3s ease;
+      }
+
+      .suggestion-form-container input[type="text"]:focus,
+      .suggestion-form-container textarea:focus,
+      .suggestion-form-container select:focus {
+        outline: none;
+        border-color: var(--main-color-light);
+        box-shadow: 0 0 10px rgba(160, 89, 255, 0.6);
+      }
+
+      .suggestion-form-container textarea {
+        resize: vertical;
+        min-height: 80px;
+      }
+
+      .form-actions {
+        display: flex;
+        justify-content: space-between;
+        gap: 15px;
+        margin-top: 30px;
+      }
+
+      .form-actions button {
+        flex: 1;
+        padding: 12px 25px;
+        border: none;
+        border-radius: 8px;
+        font-size: 17px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .form-actions button.send-button {
+        background: linear-gradient(45deg, var(--main-color-gradient-start), var(--main-color-gradient-end));
+        color: #fff;
+        box-shadow: 0 4px 15px rgba(89, 39, 170, 0.5);
+      }
+
+      .form-actions button.send-button:hover {
+        box-shadow: 0 6px 20px rgba(160, 89, 255, 0.8);
+        transform: translateY(-2px);
+      }
+
+      .form-actions button.close-button {
+        background: rgba(255, 255, 255, 0.1);
+        color: var(--text-medium);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .form-actions button.close-button:hover {
+        background: rgba(255, 255, 255, 0.2);
+        color: var(--text-light);
+        transform: translateY(-2px);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="suggestion-form-container">
+      <h3>Suggérer un nouveau Gear</h3>
+      <form id="gearSuggestionForm">
+        <label for="gearImage">URL de l'image du Gear :</label>
+        <input type="text" id="gearImage" name="gearImage" placeholder="Ex: https://i.imgur.com/example.png" required>
+
+        <label for="gearName">Nom du Gear :</label>
+        <input type="text" id="gearName" name="gearName" placeholder="Ex: Épée Légendaire" required>
+
+        <label for="gearCategory">Catégorie du Gear :</label>
+        <select id="gearCategory" name="gearCategory" required>
+          <option value="">Sélectionner une catégorie</option>
+          <option value="Pour tous les joueurs">Pour tous les joueurs</option>
+          <option value="Pour les staffs">Pour les staffs</option>
+          <option value="Interdit">Interdit</option>
+          <option value="Seulement pour les événements">Seulement pour les événements</option>
+        </select>
+
+        <label for="gearReason">Pourquoi l'ajouter ?</label>
+        <textarea id="gearReason" name="gearReason" placeholder="Expliquez pourquoi ce gear devrait être ajouté..." required></textarea>
+
+        <div class="form-actions">
+          <button type="submit" class="send-button">Envoyer</button>
+          <button type="button" class="close-button" onclick="window.location.href = 'index.html';">Fermer</button>
+        </div>
+      </form>
+    </div>
+
+    <script>
+      document.getElementById('suggestion-form').addEventListener('submit', async function(event) {
+    event.preventDefault();
+
+    const gearName = document.getElementById('gear-name').value;
+    const gearCategory = document.getElementById('gear-category').value;
+    const gearReason = document.getElementById('gear-reason').value;
+    const gearImage = document.getElementById('gear-image').value;
+
+    // ce que le front appel ta mere la pute qui marche pas, vercel de merde
+    const apiEndpoint = '/api/submit-suggestion';
+
+    const payload = {
+      gearName: gearName,
+      gearCategory: gearCategory,
+      gearReason: gearReason,
+      gearImage: gearImage
+    };
+
+    console.log('Sending payload to API:', payload);
+
+    try {
+      const response = await fetch(apiEndpoint, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload),
+      });
+
+      console.log('API response:', response);
+
+      if (response.ok) {
+        alert('Votre suggestion a été envoyée avec succès !');
+        window.location.href = 'index.html'; 
+      } else {
+        const errorData = await response.json(); // message du backend (erreur en gros)
+        alert('Échec de l\'envoi de la suggestion. Veuillez réessayer.');
+        console.error('API error status:', response.status);
+        console.error('API error response:', errorData.message);
+      }
+    } catch (error) {
+      alert('Une erreur est survenue lors de l\'envoi de la suggestion.');
+      console.error('Fetch error calling API:', error);
+    }
+  });
+    </script>
+  </body>
+</html>
