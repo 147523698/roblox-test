@@ -104,7 +104,7 @@
 
       .nav-center {
         display: flex;
-        gap: 50px;
+        gap: 20px;
         flex-grow: 1;
         justify-content: center;
       }
@@ -278,7 +278,6 @@
         letter-spacing: 1.5px;
       }
 
-      /* Styles for the new regulations page */
       .regulations-content {
         background: var(--card-bg);
         border-radius: 20px;
@@ -307,7 +306,7 @@
       }
 
       .regulations-content ul {
-        list-style: none; /* Remove default bullet points */
+        list-style: none;
         padding-left: 0;
       }
 
@@ -318,7 +317,7 @@
       }
 
       .regulations-content ul li::before {
-        content: '•'; /* Custom bullet point */
+        content: '•';
         color: var(--main-color-light);
         font-size: 24px;
         position: absolute;
@@ -707,6 +706,35 @@
       </div>
     </nav>
 
+    <section id="reglement">
+      <h2>📜 Règlement</h2>
+      <div class="regulations-content">
+        <h3>1 Assistance et signalement</h3>
+        <ul>
+          <li>Si vous rencontrez un problème en jeux, faites la commande “!help" dans le chat.</li>
+          <li>Vous devez faire un "!help" en cas de nécessité immédiate ou d'une question pertinente, si le modérateur juge que le ticket est inutile, vous vous engagez à des sanctions.</li>
+          <li>Si aucun modérateur n'est disponible, vous pouvez également contacter notre équipe via le serveur communautaire.</li>
+        </ul>
+
+        <h3>2 Règles générale</h3>
+        <ul>
+          <li>Le respect est obligatoire envers les autres joueurs et l'équipe de Center French. Tout comportement insultant, diffamatoire ou provocateur sera sanctionné.</li>
+          <li>Les propos racistes, homophobes, sexistes, ou discriminatoires sont strictement interdits et seront sévèrement et immédiatement sanctionnés.</li>
+          <li>Contourner une sanction de quelque manière que ce soit sera conduite à l'annulation de toute demande d'appel de sanction et pourra également allonger votre sanction.</li>
+          <li>Tout sujet illégal et ne respectant pas les lois françaises sera puni d'une sanction très sévère et immédiate.</li>
+          <li>Un skin approprié vous est demandé, le modérateur par sa propre appréciation peut demander au joueur de changer ou d'enlever le skin.</li>
+        </ul>
+
+        <h3>3 Comportement en jeux</h3>
+        <ul>
+          <li>Respectez les opinions des autres joueurs et joueuses, que ce soit dans le chat textuel ou vocal.</li>
+          <li>L'utilisation d'exploit ou de bugs considéré par le modérateur, comme dérangeant sera sanctionné immédiatement.</li>
+          <li>Les soundboard sont tolérés, mais si un membre de la modération considère que cela dérange les joueurs, vous devez l'arrêter sous peine de sanctions, de plus, la modération se donne le droit de stopper quiconque utilise des soundboard, cela vient à la responsabilité du joueur.</li>
+          <li>La demande excessive de gears est punissable.</li>
+          <li>Les sujets ou les débats à caractère politique sont tolérés, mais la modération peut se donner le droit de stopper le débat.</li>
+        </ul>
+      </div>
+    </section>
 
     <section id="joueurs">
       <h2>✅ Gears autorisés pour les joueurs</h2>
@@ -1356,36 +1384,6 @@
           <button class="copy-btn" onclick="copyId(this, '11419319')">Copier l'ID</button>
           <div class="copied-msg">✅ ID copié !</div>
         </div>
-      </div>
-    </section>
-
-    <section id="reglement">
-      <h2>📜 Règlement</h2>
-      <div class="regulations-content">
-        <h3>1 Assistance et signalement</h3>
-        <ul>
-          <li>Si vous rencontrez un problème en jeux, faites la commande “!help" dans le chat.</li>
-          <li>Vous devez faire un "!help" en cas de nécessité immédiate ou d'une question pertinente, si le modérateur juge que le ticket est inutile, vous vous engagez à des sanctions.</li>
-          <li>Si aucun modérateur n'est disponible, vous pouvez également contacter notre équipe via le serveur communautaire.</li>
-        </ul>
-
-        <h3>2 Règles générale</h3>
-        <ul>
-          <li>Le respect est obligatoire envers les autres joueurs et l'équipe de Center French. Tout comportement insultant, diffamatoire ou provocateur sera sanctionné.</li>
-          <li>Les propos racistes, homophobes, sexistes, ou discriminatoires sont strictement interdits et seront sévèrement et immédiatement sanctionnés.</li>
-          <li>Contourner une sanction de quelque manière que ce soit sera conduite à l'annulation de toute demande d'appel de sanction et pourra également allonger votre sanction.</li>
-          <li>Tout sujet illégal et ne respectant pas les lois françaises sera puni d'une sanction très sévère et immédiate.</li>
-          <li>Un skin approprié vous est demandé, le modérateur par sa propre appréciation peut demander au joueur de changer ou d'enlever le skin.</li>
-        </ul>
-
-        <h3>3 Comportement en jeux</h3>
-        <ul>
-          <li>Respectez les opinions des autres joueurs et joueuses, que ce soit dans le chat textuel ou vocal.</li>
-          <li>L'utilisation d'exploit ou de bugs considéré par le modérateur, comme dérangeant sera sanctionné immédiatement.</li>
-          <li>Les soundboard sont tolérés, mais si un membre de la modération considère que cela dérange les joueurs, vous devez l'arrêter sous peine de sanctions, de plus, la modération se donne le droit de stopper quiconque utilise des soundboard, cela vient à la responsabilité du joueur.</li>
-          <li>La demande excessive de gears est punissable.</li>
-          <li>Les sujets ou les débats à caractère politique sont tolérés, mais la modération peut se donner le droit de stopper le débat.</li>
-        </ul>
       </div>
     </section>
 
