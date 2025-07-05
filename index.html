@@ -1,99 +1,1526 @@
-<!DOCTYPE html>
 <html lang="fr">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Redirection vers CenterFrench</title>
+    <title>Center French - Gears Roblox</title>
+    <link rel="icon" href="https://i.imgur.com/tuAjHeg.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;800&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+      :root {
+        --main-color: #5927AA;
+        --main-color-light: #8A4CEB;
+        --main-color-gradient-start: #5927AA;
+        --main-color-gradient-end: #A059FF;
+        --bg-start: #08080d;
+        --bg-end: #101015;
+        --card-bg: rgba(25, 25, 35, 0.7);
+        --border-color: rgba(138, 76, 235, 0.3);
+        --text-light: #E8E8E8;
+        --text-medium: #D0D0D0;
+        --text-dark: #B0B0B0;
+        --text-darker: #909090;
+        --success: #4CAF50;
+        --error: #F44336;
+      }
 
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #121212;
-            color: #e0e0e0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            transition: all 0.3s ease;
-        }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        scroll-behavior: smooth;
+      }
 
-        .container {
-            background-color: #1e1e1e;
-            padding: 30px;
-            border-radius: 10px;
-            text-align: center;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-            width: 90%;
-            max-width: 400px;
-        }
+      body {
+        font-family: 'Rajdhani', sans-serif;
+        background: linear-gradient(to bottom, var(--bg-start), var(--bg-end));
+        color: var(--text-light);
+        overflow-x: hidden;
+        line-height: 1.6;
+        position: relative;
+      }
 
-        h1 {
+      body::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: radial-gradient(circle at top left, rgba(89, 39, 170, 0.1) 0%, transparent 30%),
+                          radial-gradient(circle at bottom right, rgba(160, 89, 255, 0.1) 0%, transparent 30%);
+        background-size: 100% 100%;
+        animation: subtleBackgroundShift 20s infinite alternate ease-in-out;
+        z-index: -1;
+      }
+
+      @keyframes subtleBackgroundShift {
+        0% { background-position: 0% 0%; }
+        100% { background-position: 100% 100%; }
+      }
+
+      section {
+        padding: 80px 20px 50px;
+        max-width: 1200px;
+        margin: auto;
+        position: relative;
+        z-index: 1;
+        display: block;
+      }
+
+      nav {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        backdrop-filter: blur(20px);
+        background: rgba(10, 10, 15, 0.8);
+        padding: 20px 40px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4), 0 0 25px rgba(89, 39, 170, 0.2);
+      }
+
+      .nav-left {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+
+      .nav-left img {
+        height: 50px;
+        filter: drop-shadow(0 0 8px rgba(160, 89, 255, 0.6));
+      }
+
+      .nav-left span {
+        font-family: 'Orbitron', sans-serif;
+        font-size: 28px;
+        color: var(--main-color-light);
+        letter-spacing: 2px;
+        font-weight: 800;
+        text-shadow: 0 0 12px rgba(160, 89, 255, 0.7);
+      }
+
+      .nav-center {
+        display: flex;
+        gap: 50px;
+        flex-grow: 1;
+        justify-content: center;
+      }
+
+      .nav-center a {
+        text-decoration: none;
+        color: var(--text-medium);
+        font-size: 18px;
+        font-weight: 700;
+        padding: 10px 20px;
+        border-radius: 12px;
+        transition: all 0.3s ease;
+        position: relative;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        overflow: hidden;
+      }
+
+      .nav-center a::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(45deg, rgba(89, 39, 170, 0.3), rgba(160, 89, 255, 0.3));
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.3s ease-out;
+        z-index: -1;
+      }
+
+      .nav-center a:hover::before,
+      .nav-center a.active::before {
+        transform: scaleX(1);
+      }
+
+      .nav-center a::after {
+        content: "";
+        position: absolute;
+        width: 0%;
+        height: 4px;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: linear-gradient(90deg, var(--main-color-light), var(--main-color-gradient-end));
+        transition: width 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        border-radius: 4px;
+        box-shadow: 0 0 15px rgba(160, 89, 255, 0.6);
+      }
+
+      .nav-center a:hover::after,
+      .nav-center a.active::after {
+        width: 100%;
+      }
+
+      .nav-center a:hover,
+      .nav-center a.active {
+        color: var(--text-light);
+        transform: translateY(-3px);
+        box-shadow: 0 0 20px rgba(160, 89, 255, 0.4);
+      }
+
+      .nav-right {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .nav-right-icons {
+        display: flex;
+        gap: 10px;
+      }
+
+      .nav-right-icons a {
+        color: var(--text-light);
+        font-size: 24px;
+        transition: color 0.3s ease, transform 0.3s ease;
+      }
+
+      .nav-right-icons a:hover {
+        color: var(--main-color-light);
+        transform: scale(1.1);
+      }
+
+      .search-container {
+        position: relative;
+        display: flex;
+        align-items: center;
+      }
+
+      .search-container input {
+        background: rgba(40, 40, 55, 0.8);
+        border: 1px solid var(--border-color);
+        border-radius: 10px;
+        padding: 10px 15px;
+        color: var(--text-light);
+        font-size: 16px;
+        width: 250px;
+        transition: all 0.3s ease;
+        box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.3);
+      }
+
+      .search-container input::placeholder {
+        color: var(--text-dark);
+      }
+
+      .search-container input:focus {
+        outline: none;
+        border-color: var(--main-color-light);
+        box-shadow: 0 0 15px rgba(160, 89, 255, 0.5), inset 0 0 8px rgba(160, 89, 255, 0.2);
+        background: rgba(40, 40, 55, 0.95);
+      }
+
+      .suggestion-link {
+        text-decoration: none;
+        color: #fff;
+        font-size: 17px;
+        font-weight: 700;
+        padding: 10px 22px;
+        border-radius: 12px;
+        transition: all 0.3s ease;
+        background: linear-gradient(45deg, var(--main-color-gradient-start), var(--main-color-gradient-end));
+        border: 2px solid var(--main-color-light);
+        box-shadow: 0 4px 20px rgba(89, 39, 170, 0.4);
+        text-transform: uppercase;
+        letter-spacing: 0.8px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .suggestion-link::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        transition: width 0.4s ease, height 0.4s ease;
+        z-index: 0;
+      }
+
+      .suggestion-link:hover::before {
+        width: 200%;
+        height: 200%;
+      }
+
+      .suggestion-link span {
+        position: relative;
+        z-index: 1;
+      }
+
+      .suggestion-link:hover {
+        box-shadow: 0 6px 30px rgba(160, 89, 255, 0.8);
+        transform: translateY(-3px) scale(1.02);
+        border-color: var(--main-color-gradient-end);
+      }
+
+      section h2 {
+        font-family: 'Orbitron', sans-serif;
+        font-size: 36px;
+        margin-bottom: 50px;
+        border-left: 8px solid var(--main-color-light);
+        padding-left: 20px;
+        font-weight: 800;
+        color: var(--text-light);
+        text-shadow: 0 0 15px rgba(160, 89, 255, 0.6);
+        letter-spacing: 1.5px;
+      }
+
+      /* Styles for the new regulations page */
+      .regulations-content {
+        background: var(--card-bg);
+        border-radius: 20px;
+        padding: 40px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4), 0 0 20px rgba(89, 39, 170, 0.2);
+        backdrop-filter: blur(12px);
+        border: 2px solid var(--border-color);
+      }
+
+      .regulations-content h3 {
+        font-family: 'Orbitron', sans-serif;
+        font-size: 28px;
+        color: var(--main-color-light);
+        margin-top: 30px;
+        margin-bottom: 20px;
+        text-shadow: 0 0 10px rgba(160, 89, 255, 0.4);
+        border-bottom: 2px solid rgba(138, 76, 235, 0.5);
+        padding-bottom: 10px;
+      }
+
+      .regulations-content p,
+      .regulations-content ul {
+        font-size: 17px;
+        color: var(--text-medium);
+        margin-bottom: 15px;
+      }
+
+      .regulations-content ul {
+        list-style: none; /* Remove default bullet points */
+        padding-left: 0;
+      }
+
+      .regulations-content ul li {
+        position: relative;
+        padding-left: 25px;
+        margin-bottom: 10px;
+      }
+
+      .regulations-content ul li::before {
+        content: '•'; /* Custom bullet point */
+        color: var(--main-color-light);
+        font-size: 24px;
+        position: absolute;
+        left: 0;
+        top: -2px;
+        font-weight: bold;
+      }
+
+      .gear-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+        justify-content: center;
+      }
+
+      .gear-card {
+        background: var(--card-bg);
+        border-radius: 20px;
+        padding: 25px;
+        text-align: center;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4), 0 0 20px rgba(89, 39, 170, 0.2);
+        transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        backdrop-filter: blur(12px);
+        border: 2px solid var(--border-color);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .gear-card::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: linear-gradient(60deg, transparent, rgba(160, 89, 255, 0.4), transparent);
+        transform: rotate(0deg);
+        opacity: 0;
+        transition: opacity 0.4s ease, transform 0.4s ease;
+        z-index: -1;
+      }
+
+      .gear-card:hover::before {
+        opacity: 1;
+        transform: rotate(360deg);
+      }
+
+      .gear-card:hover {
+        transform: translateY(-8px) scale(1.005);
+        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5), 0 0 30px rgba(160, 89, 255, 0.5);
+        border-color: var(--main-color-light);
+      }
+
+      .gear-card img {
+        width: 100%;
+        max-height: 180px;
+        object-fit: contain;
+        border-radius: 15px;
+        margin-bottom: 20px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      }
+
+      .gear-name {
+        font-family: 'Orbitron', sans-serif;
+        font-size: 22px;
+        margin-bottom: 8px;
+        font-weight: 700;
+        color: var(--main-color-light);
+        text-shadow: 0 0 7px rgba(160, 89, 255, 0.3);
+      }
+      .gear-card .gear-quantity {
+        font-family: 'Rajdhani', sans-serif;
+        font-size: 18px;
+        color: var(--main-color-light);
+        margin-bottom: 10px;
+        font-weight: 500;
+      }
+
+      .gear-extra {
+        font-size: 16px;
+        color: var(--text-dark);
+        margin-bottom: 8px;
+      }
+
+      .gear-id {
+        color: var(--text-darker);
+        font-size: 14px;
+        margin-bottom: 15px;
+        word-break: break-all;
+        font-family: 'monospace', monospace;
+      }
+
+      .copy-btn {
+        background: linear-gradient(45deg, var(--main-color-gradient-start), var(--main-color-gradient-end));
+        color: #fff;
+        border: none;
+        padding: 12px 20px;
+        font-weight: bold;
+        font-size: 16px;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(89, 39, 170, 0.5);
+        text-transform: uppercase;
+        letter-spacing: 0.8px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .copy-btn::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.15);
+        transform: skewX(-20deg);
+        transition: all 0.4s ease;
+      }
+
+      .copy-btn:hover::before {
+        left: 100%;
+      }
+
+      .copy-btn:hover {
+        background: linear-gradient(45deg, var(--main-color-light), #be01f8);
+        box-shadow: 0 6px 25px rgba(160, 89, 255, 0.8);
+        transform: translateY(-2px) scale(1.01);
+      }
+
+      .copy-btn[disabled] {
+        background: #444;
+        cursor: not-allowed;
+        box-shadow: none;
+        transform: none;
+        opacity: 0.7;
+      }
+
+      .copied-msg {
+        font-size: 14px;
+        margin-top: 10px;
+        color: var(--success);
+        display: none;
+        font-weight: 700;
+        animation: fadeInOut 2.5s forwards;
+      }
+
+      @keyframes fadeInOut {
+        0% { opacity: 0; transform: translateY(10px); }
+        15% { opacity: 1; transform: translateY(0); }
+        85% { opacity: 1; transform: translateY(0); }
+        100% { opacity: 0; transform: translateY(-10px); }
+      }
+
+      #noResultsMessage {
+          text-align: center;
+          font-size: 50px;
+          color: var(--text-dark);
+          margin-top: 40px;
+          display: none;
+          font-weight: 600;
+      }
+
+      @media (max-width: 1200px) {
+        section {
+            padding-left: 30px;
+            padding-right: 30px;
+        }
+      }
+
+      @media (max-width: 992px) {
+        .nav-center {
+            gap: 30px;
+        }
+        .nav-left span {
             font-size: 24px;
-            margin-bottom: 20px;
-            color: #ffffff;
         }
-
-        .link {
-            font-size: 18px;
-            color: #b3b3b3;
-            text-decoration: none;
-            display: block;
-            margin-bottom: 30px;
-            transition: color 0.3s;
+        section h2 {
+            font-size: 32px;
         }
-
-        .link:hover {
-            color: #ffffff;
+        .gear-list {
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 25px;
         }
-
-        .button {
-            padding: 15px 25px;
-            font-size: 18px;
-            color: white;
-            background-color: #6200ea;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            text-decoration: none;
-            display: inline-block;
+        .nav-right {
+            gap: 15px;
         }
-
-        .button:hover {
-            background-color: #3700b3;
+        .search-container input {
+            width: 200px;
         }
-
-        .button:active {
-            background-color: #03dac6;
+        .regulations-content h3 {
+            font-size: 24px;
         }
-
-        .button:focus {
-            outline: none;
-        }
-
-        p {
-            margin-bottom: 20px;
+        .regulations-content p,
+        .regulations-content ul {
             font-size: 16px;
-            color: #b3b3b3;
         }
+      }
+
+      @media (max-width: 768px) {
+        nav {
+          flex-direction: column;
+          align-items: flex-start;
+          padding: 15px 20px;
+        }
+
+        .nav-left {
+            width: 100%;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+
+        .nav-center {
+          position: static;
+          transform: none;
+          flex-wrap: wrap;
+          justify-content: center;
+          width: 100%;
+          margin-top: 0;
+          gap: 15px;
+        }
+
+        .nav-center a {
+            font-size: 16px;
+            padding: 8px 15px;
+        }
+
+        .nav-right {
+          flex-direction: column;
+          width: 100%;
+          justify-content: center;
+          margin-top: 20px;
+          gap: 15px;
+          margin-left: 0;
+        }
+
+        .nav-right-icons {
+          justify-content: center;
+          width: 100%;
+        }
+
+        .search-container {
+            width: 100%;
+            justify-content: center;
+        }
+
+        .search-container input {
+            width: 100%;
+            max-width: 300px;
+        }
+
+        .suggestion-link {
+            width: 100%;
+            text-align: center;
+            font-size: 16px;
+            padding: 10px 18px;
+        }
+
+        section {
+            padding: 50px 15px 30px;
+        }
+
+        section h2 {
+            font-size: 28px;
+            margin-bottom: 30px;
+            padding-left: 15px;
+            border-left-width: 6px;
+        }
+
+        .regulations-content {
+            padding: 25px;
+        }
+
+        .regulations-content h3 {
+            font-size: 22px;
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+
+        .regulations-content p,
+        .regulations-content ul {
+            font-size: 15px;
+        }
+
+        .gear-list {
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .gear-card {
+            padding: 20px;
+        }
+        .gear-card img {
+            max-height: 160px;
+        }
+        .gear-name {
+            font-size: 20px;
+        }
+        .gear-extra {
+            font-size: 15px;
+        }
+        .copy-btn {
+            font-size: 15px;
+            padding: 10px 18px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .nav-left img {
+            height: 40px;
+        }
+        .nav-left span {
+            font-size: 20px;
+            letter-spacing: 1px;
+        }
+        .nav-center {
+            gap: 10px;
+        }
+        .nav-center a {
+            font-size: 14px;
+            padding: 6px 10px;
+        }
+        section h2 {
+            font-size: 24px;
+        }
+        .regulations-content h3 {
+            font-size: 20px;
+        }
+        .regulations-content p,
+        .regulations-content ul {
+            font-size: 14px;
+        }
+        .gear-card {
+            padding: 18px;
+        }
+        .gear-card img {
+            max-height: 130px;
+        }
+        .gear-name {
+            font-size: 18px;
+        }
+        .gear-extra {
+            font-size: 14px;
+        }
+        .copy-btn {
+            font-size: 14px;
+            padding: 8px 15px;
+        }
+        .search-container input {
+            font-size: 13px;
+            padding: 7px 10px;
+        }
+      }
+
     </style>
-</head>
-<body>
+  </head>
+  <body>
 
-<div class="container">
-    <h1>Accédez au nouveau site CenterFrench</h1>
-    <p>Le Lien du site a changer ! Click soit sur le lien, ou sur le bouton pour y accéder.</p>
-    
-    <a href="https://centerfrench.vercel.app" class="link" target="_blank">https://centerfrench.vercel.app</a>
-    
-    <a href="https://centerfrench.vercel.app" class="button" target="_blank">Accéder au site</a>
-</div>
+    <nav>
+      <div class="nav-left">
+          <img src="https://i.imgur.com/tuAjHeg.png" alt="Logo Roblox">
+          <span>Center French</span>
+      </div>
 
-</body>
+      <div class="nav-center">
+          <a href="#reglement" class="">Règlement</a>
+          <a href="#joueurs" class="active">Joueurs</a>
+          <a href="#staff" class="">Staff</a>
+          <a href="#interdits" class="">Interdits</a>
+          <a href="#event" class="">Event</a>
+      </div>
+
+      <div class="nav-right">
+          <div class="nav-right-icons">
+              <a href="https://discord.gg/centerfrench" target="_blank" title="Rejoindre notre serveur Discord"><i class="fab fa-discord"></i></a>
+              <a href="https://discord.com/channels/1310246539125325865/1367232583137497128" target="_blank" title="Accéder au salon Discord"><i class="fas fa-plus"></i></a>
+          </div>
+          <div class="search-container">
+              <input type="text" id="searchInput" placeholder="Rechercher un gear...">
+          </div>
+          <a href="suggestion.html" class="suggestion-link"><span>Suggestion</span></a>
+      </div>
+    </nav>
+
+
+    <section id="joueurs">
+      <h2>✅ Gears autorisés pour les joueurs</h2>
+      <div class="gear-list">
+        <div class="gear-card">
+          <img src="https://static.robloxden.com/strapi/thumbnail_bugle_1938e95536" alt="Trompette">
+          <div class="gear-name">Bugle</div>
+          <div class="gear-extra">Trompette</div>
+          <div class="gear-id">ID: 33683368</div>
+          <button class="copy-btn" onclick="copyId(this, '33683368')">Copier l'ID</button>
+          <div class="copied-msg">✅ ID copié !</div>
+        </div>
+        <div class="gear-card">
+          <img src="https://static.robloxden.com/robloxden-strapi/thumbnail_pretty_pretty_princess_sceptor_848d6b78e1" alt="Pretty Pretty Princess Sceptor">
+          <div class="gear-name">Pretty Pretty Princess Sceptor</div>
+          <div class="gear-quantity">Quantité: 2 <br>( attention aux abus )</div>
+          <div class="gear-extra">Princesse</div>
+          <div class="gear-id">ID: 114020480</div>
+          <button class="copy-btn" onclick="copyId(this, '114020480')">Copier l'ID</button>
+          <div class="copied-msg">✅ ID copié !</div>
+        </div>
+        <div class="gear-card">
+          <img src="https://static.robloxden.com/strapi/thumbnail_tic_tac_toe_board_7f85254b94" alt="Tic Tac Toe Board">
+          <div class="gear-name">Tic Tac Toe Board</div>
+          <div class="gear-extra">Morpion</div>
+          <div class="gear-id">ID: 16924676</div>
+          <button class="copy-btn" onclick="copyId(this, '16924676')">Copier l'ID</button>
+          <div class="copied-msg">✅ ID copié !</div>
+        </div>
+        <div class="gear-card">
+          <img src="https://static.robloxden.com/strapi/thumbnail_hot_wheelsr_rc_street_hawktm_30bd7fc8bd" alt="HOT WHEELS® RC Street Hawk™ ">
+          <div class="gear-name">HOT WHEELS® RC Street Hawk™ </div>
+          <div class="gear-extra">Voiture Hot Wheels télécommandé qui vole</div>
+          <div class="gear-id">ID: 184758255</div>
+          <button class="copy-btn" onclick="copyId(this, '184758255')">Copier l'ID</button>
+          <div class="copied-msg">✅ ID copié !</div>
+        </div>
+        <div class="gear-card">
+          <img src="https://static.robloxden.com/strapi/thumbnail_mega_bloks_r_hot_wheels_tm_truck_5c57c60a04" alt="Mega Bloks ® Hot Wheels ™ Truck">
+          <div class="gear-name">Mega Bloks ® Hot Wheels ™ Truck</div>
+          <div class="gear-extra">4x4 Hot Wheels télécommandé</div>
+          <div class="gear-id">ID: 183441634</div>
+          <button class="copy-btn" onclick="copyId(this, '183441634')">Copier l'ID</button>
+          <div class="copied-msg">✅ ID copié !</div>
+        </div>
+        <div class="gear-card">
+          <img src="https://static.robloxden.com/strapi/thumbnail_hot_wheelsr_twinduction_car_d2ae253671" alt="Hot Wheels® Twinduction Car">
+          <div class="gear-name">Hot Wheels® Twinduction Car</div>
+          <div class="gear-extra">Voiture Hot Wheels télécommandé</div>
+          <div class="gear-id">ID: 223132403</div>
+          <button class="copy-btn" onclick="copyId(this, '223132403')">Copier l'ID</button>
+          <div class="copied-msg">✅ ID copié !</div>
+        </div>
+        <div class="gear-card">
+          <img src="https://static.robloxden.com/strapi/thumbnail_saxophone_30393653_e337f83368" alt="Saxophone">
+          <div class="gear-name">Saxophone</div>
+          <div class="gear-id">ID: 30393653</div>
+          <button class="copy-btn" onclick="copyId(this, '30393653')">Copier l'ID</button>
+          <div class="copied-msg">✅ ID copié !</div>
+        </div>
+        <div class="gear-card">
+          <img src="https://static.robloxden.com/strapi/thumbnail_inflatable_saxophone_9e73617849" alt="Inflatable Saxophone">
+          <div class="gear-name">Inflatable Saxophone</div>
+          <div class="gear-id">ID: 2620523077</div>
+          <button class="copy-btn" onclick="copyId(this, '2620523077')">Copier l'ID</button>
+          <div class="copied-msg">✅ ID copié !</div>
+        </div>
+        <div class="gear-card">
+          <img src="https://static.robloxden.com/strapi/thumbnail_drum_kit_b7a8c72b11" alt="Drum kit">
+          <div class="gear-name">Drum Kit</div>
+          <div class="gear-extra">Batterie</div>
+          <div class="gear-id">ID: 33866728</div>
+          <button class="copy-btn" onclick="copyId(this, '33866728')">Copier l'ID</button>
+          <div class="copied-msg">✅ ID copié !</div>
+        </div>
+        <div class="gear-card">
+          <img src="https://static.robloxden.com/strapi/thumbnail_racing_tractor_583415746c" alt="Racing Tractor">
+          <div class="gear-name">Racing Tractor</div>
+          <div class="gear-quantity">Quantité: 1</div>
+          <div class="gear-extra">Tracteur</div>
+          <div class="gear-id">ID: 1708355542</div>
+          <button class="copy-btn" onclick="copyId(this, '1708355542')">Copier l'ID</button>
+          <div class="copied-msg">✅ ID copié !</div>
+        </div>
+        <div class="gear-card">
+          <img src="https://static.robloxden.com/strapi/thumbnail_green_all_terrain_vehicle_4527cdcd24" alt="Green All Terrain Vehicle">
+          <div class="gear-name">Green All Terrain Vehicle</div>
+          <div class="gear-quantity">Quantité: 2</div>
+          <div class="gear-extra">Quad vert</div>
+          <div class="gear-id">ID: 264289990</div>
+          <button class="copy-btn" onclick="copyId(this, '264289990')">Copier l'ID</button>
+          <div class="copied-msg">✅ ID copié !</div>
+        </div>
+        <div class="gear-card">
+          <img src="https://static.robloxden.com/strapi/thumbnail_silver_speedster_convertible_53b81df605" alt="Silver Speedster Convertible">
+          <div class="gear-name">Silver Speedster Convertible</div>
+          <div class="gear-quantity">Quantité: 2</div>
+          <div class="gear-extra">Voiture blanche/rouge</div>
+          <div class="gear-id">ID: 1929597345</div>
+          <button class="copy-btn" onclick="copyId(this, '1929597345')">Copier l'ID</button>
+          <div class="copied-msg">✅ ID copié !</div>
+        </div>
+        <div class="gear-card">
+          <img src="https://static.robloxden.com/strapi/thumbnail_navy_convertible_da99d3bd57" alt="Navy Convertible">
+          <div class="gear-name">Navy Convertible</div>
+          <div class="gear-quantity">Quantité: 2</div>
+          <div class="gear-extra">Voiture bleu</div>
+          <div class="gear-id">ID: 335132838</div>
+          <button class="copy-btn" onclick="copyId(this, '335132838')">Copier l'ID</button>
+          <div class="copied-msg">✅ ID copié !</div>
+        </div>
+        <div class="gear-card">
+          <img src="https://static.robloxden.com/strapi/thumbnail_red_convertible_9278fe627f" alt="Red Convertible">
+          <div class="gear-name">Red Convertible</div>
+          <div class="gear-quantity">MArche en R6<br>Quantité: 1</div>
+          <div class="gear-extra">Grosse voiture rouge</div>
+          <div class="gear-id">ID: 164207580</div>
+          <button class="copy-btn" onclick="copyId(this, '164207580')">Copier l'ID</button>
+          <div class="copied-msg">✅ ID copié !</div>
+        </div>
+        <div class="gear-card">
+          <img src="https://static.robloxden.com/strapi/thumbnail_donut_delivery_moped_c242075b0d" alt="Donut Delivery Moped">
+          <div class="gear-name">Donut Delivery Moped</div>
+          <div class="gear-quantity">Quantité: 2</div>
+          <div class="gear-extra">Scooter Donut</div>
+          <div class="gear-id">ID: 211944997</div>
+          <button class="copy-btn" onclick="copyId(this, '211944997')">Copier l'ID</button>
+          <div class="copied-msg">✅ ID copié !</div>
+        </div>
+              <div class="gear-card">
+          <img src="https://static.robloxden.com/strapi/thumbnail_sushi_scooter_6f96abc3e5" alt="Sushi Scooter">
+          <div class="gear-name">Sushi Scooter</div>
+          <div class="gear-quantity">Quantité: 2</div>
+          <div class="gear-extra">Scooter Sushi </div>
+          <div class="gear-id">ID: 271017031</div>
+          <button class="copy-btn" onclick="copyId(this, '271017031')">Copier l'ID</button>
+          <div class="copied-msg">✅ ID copié !</div>
+        </div>
+              <div class="gear-card">
+          <img src="https://static.robloxden.com/strapi/thumbnail_109_zombie_escape_scooter_107000e31c" alt="10/9 - Zombie Escape Scooter">
+          <div class="gear-name">10/9 - Zombie Escape Scooter</div>
+          <div class="gear-quantity">Quantité: 2</div>
+          <div class="gear-extra">Scooter Zombie</div>
+          <div class="gear-id">ID: 304719869</div>
+          <button class="copy-btn" onclick="copyId(this, '304719869')">Copier l'ID</button>
+          <div class="copied-msg">✅ ID copié !</div>
+        </div>
+              <div class="gear-card">
+          <img src="https://static.robloxden.com/strapi/thumbnail_pizza_delivery_vehicle_b8f98bd1ca" alt="Pizza Delivery Vehicle">
+          <div class="gear-name">Pizza Delivery Vehicle</div>
+          <div class="gear-quantity">Quantité: 2</div>
+          <div class="gear-extra">Scooteur Pizza</div>
+          <div class="gear-id">ID: 170903216</div>
+          <button class="copy-btn" onclick="copyId(this, '170903216')">Copier l'ID</button>
+          <div class="copied-msg">✅ ID copié !</div>
+        </div>
+              <div class="gear-card">
+          <img src="https://static.robloxden.com/strapi/thumbnail_midnight_motor_madness_scooter_079bd758cf" alt="Midnight Motor Madness Scooter">
+          <div class="gear-name">Midnight Motor Madness Scooter</div>
+          <div class="gear-quantity">Quantité: 2</div>
+          <div class="gear-extra">Scooter violet/noir</div>
+          <div class="gear-id">ID: 286527303</div>
+          <button class="copy-btn" onclick="copyId(this, '286527303')">Copier l'ID</button>
+          <div class="copied-msg">✅ ID copié !</div>
+        </div>
+              <div class="gear-card">
+          <img src="https://static.robloxden.com/strapi/thumbnail_trusty_blade_7f4e8ee134" alt="Trusty Blade">
+          <div class="gear-name">Trusty Blade</div>
+          <div class="gear-extra">Épée</div>
+          <div class="gear-id">ID: 96669687</div>
+          <button class="copy-btn" onclick="copyId(this, '96669687')">Copier l'ID</button>
+          <div class="copied-msg">✅ ID copié !</div>
+        </div>
+              <div class="gear-card">
+          <img src="https://static.robloxden.com/robloxden-strapi/thumbnail_pepperoni_pizza_4c85fe67e1" alt="Pepperoni Pizza">
+          <div class="gear-name">Pepperoni Pizza</div>
+          <div class="gear-extra">Part de Pizza</div>
+          <div class="gear-id">ID: 22596452</div>
+          <button class="copy-btn" onclick="copyId(this, '22596452')">Copier l'ID</button>
+          <div class="copied-msg">✅ ID copié !</div>
+        </div>
+              <div class="gear-card">
+          <img src="https://static.robloxden.com/strapi/thumbnail_april_showers_528d283aa5" alt="April Showers">
+          <div class="gear-name">April Showers</div>
+          <div class="gear-extra">Nuage de Pluie</div>
+          <div class="gear-id">ID: 111876831</div>
+          <button class="copy-btn" onclick="copyId(this, '111876831')">Copier l'ID</button>
+          <div class="copied-msg">✅ ID copié !</div>
+        </div>
+              <div class="gear-card">
+          <img src="https://static.robloxden.com/strapi/thumbnail_spring_sunshine_b51cae1a21" alt="Spring Sunshine">
+          <div class="gear-name">Spring Sunshine</div>
+          <div class="gear-extra">Soleil</div>
+          <div class="gear-id">ID: 150363993</div>
+          <button class="copy-btn" onclick="copyId(this, '150363993')">Copier l'ID</button>
+          <div class="copied-msg">✅ ID copié !</div>
+        </div>
+              <div class="gear-card">
+          <img src="https://static.robloxden.com/strapi/thumbnail_magical_umbrella_fe4d569b84" alt="Magical Umbrella">
+          <div class="gear-name">Magical Umbrella</div>
+          <div class="gear-extra">Parapluie</div>
+          <div class="gear-id">ID: 44115926</div>
+          <button class="copy-btn" onclick="copyId(this, '44115926')">Copier l'ID</button>
+          <div class="copied-msg">✅ ID copié !</div>
+        </div>
+        <div class="gear-card">
+          <img src="https://static.robloxden.com/strapi/thumbnail_cowbell_992a96eef8" alt="Cowbell">
+          <div class="gear-name">Cowbell</div>
+          <div class="gear-extra">Cloche</div>
+          <div class="gear-id">ID: 20373160</div>
+          <button class="copy-btn" onclick="copyId(this, '20373160')">Copier l'ID</button>
+          <div class="copied-msg">✅ ID copié !</div>
+        </div>
+        <div class="gear-card">
+          <img src="https://static.robloxden.com/strapi/thumbnail_lunar_lander_2d_game_05de15adf4" alt="Lunar Lander 2D Game">
+          <div class="gear-name">Lunar Lander 2D Game</div>
+          <div class="gear-quantity">Fais beaucoup de bruit pour celui qui l'utilise</div>
+          <div class="gear-extra">GameBoy</div>
+          <div class="gear-id">ID: 85145662</div>
+          <button class="copy-btn" onclick="copyId(this, '85145662')">Copier l'ID</button>
+          <div class="copied-msg">✅ ID copié !</div>
+      </div>
+      <div class="gear-card">
+          <img src="https://static.robloxden.com/strapi/thumbnail_red_rolling_hoverboard_974940d4ca" alt="Red Rolling Hoverboard">
+          <div class="gear-name">Red Rolling Hoverboard</div>
+          <div class="gear-quantity">Quantité: 2</div>
+          <div class="gear-extra">Hoverboard Rouge</div>
+          <div class="gear-id">ID: 398675172</div>
+          <button class="copy-btn" onclick="copyId(this, '398675172')">Copier l'ID</button>
+          <div class="copied-msg">✅ ID copié !</div>
+        </div>
+    </section>
+
+    <section id="staff">
+      <h2>🛡️ Gears réservés aux staffs</h2>
+      <div class="gear-list">
+        <div class="gear-card">
+          <img src="https://static.robloxden.com/strapi/thumbnail_golden_steampunk_gloves_d4324996e2" alt="Golden Steampunk Gloves">
+          <div class="gear-name">Golden Steampunk Gloves</div>
+          <div class="gear-extra">Gant de Thanos</div>
+          <div class="gear-id">ID: 243790334</div>
+          <button class="copy-btn" onclick="copyId(this, '243790334')">Copier l'ID</button>
+          <div class="copied-msg">✅ ID copié !</div>
+        </div>
+        <div class="gear-card">
+          <img src="https://static.robloxden.com/strapi/thumbnail_kylo_rens_lightsaber_a09c656ef2" alt="Kylo Ren’s Lightsaber">
+          <div class="gear-name">Kylo Ren’s Lightsaber</div>
+          <div class="gear-extra">Épée Laser</div>
+          <div class="gear-id">ID: 1208300505</div>
+          <button class="copy-btn" onclick="copyId(this, '1208300505')">Copier l'ID</button>
+          <div class="copied-msg">✅ ID copié !</div>
+        </div>
+        <div class="gear-card">
+          <img src="https://static.robloxden.com/strapi/thumbnail_laser_finger_pointers_0787fc1812" alt="Laser Finger Pointers">
+          <div class="gear-name">Laser Finger Pointers</div>
+          <div class="gear-extra">Laser</div>
+          <div class="gear-id">ID: 115377964</div>
+          <button class="copy-btn" onclick="copyId(this, '115377964')">Copier l'ID</button>
+          <div class="copied-msg">✅ ID copié !</div>
+        </div>
+        <div class="gear-card">
+          <img src="https://static.robloxden.com/strapi/thumbnail_roblox_world_tour_hot_air_balloon_96bd57e944" alt="ROBLOX World Tour Hot Air Balloon">
+          <div class="gear-name">ROBLOX World Tour Hot Air Balloon</div>
+          <div class="gear-extra">Mongolfière</div>
+          <div class="gear-id">ID: 116040828</div>
+          <button class="copy-btn" onclick="copyId(this, '116040828')">Copier l'ID</button>
+          <div class="copied-msg">✅ ID copié !</div>
+        </div>
+        <div class="gear-card">
+          <img src="https://static.robloxden.com/strapi/thumbnail_super_freeze_ray_2011_ce84178f43" alt="Super Freeze Ray 2011">
+          <div class="gear-name">Super Freeze Ray 2011</div>
+          <div class="gear-extra">Freeze Gun</div>
+          <div class="gear-id">ID: 42845853</div>
+          <button class="copy-btn" onclick="copyId(this, '42845853')">Copier l'ID</button>
+          <div class="copied-msg">✅ ID copié !</div>
+        </div>
+        <div class="gear-card">
+          <img src="https://static.robloxden.com/strapi/thumbnail_rail_runner_5000_65a17f791d" alt="Rail Runner 5000">
+          <div class="gear-name">Rail Runner 5000</div>
+          <div class="gear-extra">Fusil a Poutre</div>
+          <div class="gear-id">ID: 79446473</div>
+          <button class="copy-btn" onclick="copyId(this, '79446473')">Copier l'ID</button>
+          <div class="copied-msg">✅ ID copié !</div>
+        </div>
+        <div class="gear-card">
+          <img src="https://static.robloxden.com/strapi/thumbnail_harpoon_3562214aeb" alt="Harpoon">
+          <div class="gear-name">Harpoon</div>
+          <div class="gear-extra">Harpon</div>
+          <div class="gear-id">ID: 118281529</div>
+          <button class="copy-btn" onclick="copyId(this, '118281529')">Copier l'ID</button>
+          <div class="copied-msg">✅ ID copié !</div>
+        </div>
+        <div class="gear-card">
+          <img src="https://static.robloxden.com/strapi/thumbnail_laser_lava_launcher_94761f6274" alt="Laser Lava Launcher">
+          <div class="gear-name">Laser Lava Launcher</div>
+          <div class="gear-extra">Laser qui lance de la lave</div>
+          <div class="gear-id">ID: 206798405</div>
+          <button class="copy-btn" onclick="copyId(this, '206798405')">Copier l'ID</button>
+          <div class="copied-msg">✅ ID copié !</div>
+        </div>
+        <div class="gear-card">
+          <img src="https://static.robloxden.com/strapi/thumbnail_super_spy_drone_bce533cd88" alt="Super Spy Drone">
+          <div class="gear-name">Super Spy Drone</div>
+          <div class="gear-extra">Drone</div>
+          <div class="gear-id">ID: 987032734</div>
+          <button class="copy-btn" onclick="copyId(this, '987032734')">Copier l'ID</button>
+          <div class="copied-msg">✅ ID copié !</div>
+        </div>
+        <div class="gear-card">
+          <img src="https://static.robloxden.com/robloxden-strapi/thumbnail_body_swap_potion_ba29e53a5a" alt="Body Swap Potion">
+          <div class="gear-name">Body Swap Potion</div>
+          <div class="gear-extra">Changement de corp</div>
+          <div class="gear-id">ID: 78730532</div>
+          <button class="copy-btn" onclick="copyId(this, '78730532')">Copier l'ID</button>
+          <div class="copied-msg">✅ ID copié !</div>
+        </div>
+        <div class="gear-card">
+          <img src="https://static.robloxden.com/strapi/thumbnail_the_break_up_6970d0d6bb" alt="The Break Up">
+          <div class="gear-name">The Break Up</div>
+          <div class="gear-extra">Pied de biche</div>
+          <div class="gear-id">ID: 72069827</div>
+          <button class="copy-btn" onclick="copyId(this, '72069827')">Copier l'ID</button>
+          <div class="copied-msg">✅ ID copié !</div>
+        </div>
+        <div class="gear-card">
+          <img src="https://static.robloxden.com/strapi/thumbnail_sword_of_darkness_9125a4f57a" alt="Sword of Darkness">
+          <div class="gear-name">Sword of Darkness</div>
+          <div class="gear-quantity">NE PAS EN ABUSER</div>
+          <div class="gear-extra">Épée de l'ombre</div>
+          <div class="gear-id">ID: 77443491</div>
+          <button class="copy-btn" onclick="copyId(this, '77443491')">Copier l'ID</button>
+          <div class="copied-msg">✅ ID copié !</div>
+        </div>
+        <div class="gear-card">
+          <img src="https://static.robloxden.com/strapi/thumbnail_sword_of_light_fcb3319714" alt="Sword of Light">
+          <div class="gear-name">Sword of Light</div>
+          <div class="gear-quantity">NE PAS EN ABUSER</div>
+          <div class="gear-extra">Épée de la Lumiere</div>
+          <div class="gear-id">ID: 77443461</div>
+          <button class="copy-btn" onclick="copyId(this, '77443461')">Copier l'ID</button>
+          <div class="copied-msg">✅ ID copié !</div>
+        </div>
+                      <div class="gear-card">
+          <img src="https://static.robloxden.com/strapi/thumbnail_lightning_mcqueen_companion_b0946061c4" alt="Lightning McQueen Companion">
+          <div class="gear-name">Lightning McQueen Companion</div>
+          <div class="gear-quantity">BESOIN DU BTOOLS</div>
+          <div class="gear-extra">Voiture Flash Mcqueen</div>
+          <div class="gear-id">ID: 790979662</div>
+          <button class="copy-btn" onclick="copyId(this, '790979662')">Copier l'ID</button>
+          <div class="copied-msg">✅ ID copié !</div>
+        </div>
+              <div class="gear-card">
+          <img src="https://static.robloxden.com/strapi/thumbnail_epic_flail_c16d48a70d" alt="Epic Flail">
+          <div class="gear-name">Epic Flail</div>
+          <div class="gear-extra">Mass à 3 Piques</div>
+          <div class="gear-id">ID: 204095670</div>
+          <button class="copy-btn" onclick="copyId(this, '204095670')">Copier l'ID</button>
+          <div class="copied-msg">✅ ID copié !</div>
+        </div>
+              <div class="gear-card">
+          <img src="https://static.robloxden.com/thumbnail_raig_table_ec52fa9cfd" alt="Epic Flail">
+          <div class="gear-name">Raig Table</div>
+          <div class="gear-quantity">Marche en R6</div>
+          <div class="gear-extra">Table à Lancer</div>
+          <div class="gear-id">ID: 110789105</div>
+          <button class="copy-btn" onclick="copyId(this, '110789105')">Copier l'ID</button>
+          <div class="copied-msg">✅ ID copié !</div>
+        </div>
+        <div class="gear-card">
+          <img src="https://static.robloxden.com/strapi/thumbnail_baby_nessie_mount_9ce15b7e5c" alt="Baby Nessie Mount">
+          <div class="gear-name">Baby Nessie Mount</div>
+          <div class="gear-quantity">BESOIN DU BTOOLS<br>Quantité: 1</div>
+          <div class="gear-extra">Monstre du Lockness chevauchable</div>
+          <div class="gear-id">ID: 2463674178</div>
+          <button class="copy-btn" onclick="copyId(this, '2463674178')">Copier l'ID</button>
+          <div class="copied-msg">✅ ID copié !</div>
+        </div>
+        <div class="gear-card">
+          <img src="https://static.robloxden.com/strapi/thumbnail_tiny_elephant_51dc3698bf" alt="Tiny Elephant">
+          <div class="gear-name">Tiny Elephant</div>
+          <div class="gear-quantity">BESOIN DU BTOOLS<br>Quantité: 1</div>
+          <div class="gear-extra">Élephant de combat</div>
+          <div class="gear-id">ID: 1402452608</div>
+          <button class="copy-btn" onclick="copyId(this, '1402452608')">Copier l'ID</button>
+          <div class="copied-msg">✅ ID copié !</div>
+        </div>
+              <div class="gear-card">
+          <img src="https://static.robloxden.com/strapi/thumbnail_ridable_raptor_9daf069e0f" alt="Ridable Raptor">
+          <div class="gear-name">Ridable Raptor</div>
+          <div class="gear-quantity">BESOIN DU BTOOLS<br>Quantité: 1</div>
+          <div class="gear-extra">Raptor qui se monte</div>
+          <div class="gear-id">ID: 190094270</div>
+          <button class="copy-btn" onclick="copyId(this, '190094270')">Copier l'ID</button>
+          <div class="copied-msg">✅ ID copié !</div>
+        </div>
+        <div class="gear-card">
+          <img src="https://static.robloxden.com/strapi/thumbnail_rainbow_disco_hyperbike_with_sidecar_757c75350b" alt="Rainbow Disco Hyperbike with Sidecar">
+          <div class="gear-name">Rainbow Disco Hyperbike with Sidecar</div>
+          <div class="gear-quantity">BESOIN DU BTOOLS<br>Quantité: 1<br> R6 obligatoire</div>
+          <div class="gear-extra">Moto à 2</div>
+          <div class="gear-id">ID: 477911027</div>
+          <button class="copy-btn" onclick="copyId(this, '477911027')">Copier l'ID</button>
+          <div class="copied-msg">✅ ID copié !</div>
+        </div>
+    </section>
+
+    <section id="interdits">
+      <h2>❌ Gears interdits</h2>
+      <div class="gear-list">
+        <div class="gear-card">
+          <img src="https://static.robloxden.com/strapi/thumbnail_bb_9e_f64eae6f24" alt="BB-9E">
+          <div class="gear-name">BB-9E</div>
+          <div class="gear-extra">fait bug et fait trop de bruit</div>
+          <button class="copy-btn" onclick="copyId(this, 'Ne Pas Utiliser')">Ne Pas Utiliser</button>
+          <div class="copied-msg" style="color: var(--error);">⛔ Interdit !</div>
+        </div>
+        <div class="gear-card">
+          <img src="https://static.robloxden.com/strapi/thumbnail_bb_8_59cd70448d" alt="BB-8">
+          <div class="gear-name">BB-8</div>
+          <div class="gear-extra">fait bug et fait trop de bruit</div>
+          <button class="copy-btn" onclick="copyId(this, 'Ne Pas Utiliser')">Ne Pas Utiliser</button>
+          <div class="copied-msg" style="color: var(--error);">⛔ Interdit !</div>
+        </div>
+        <div class="gear-card">
+          <img src="https://static.robloxden.com/strapi/thumbnail_from_the_vault_alpaca_plushie_ecd55db990" alt="From the Vault: Alpaca Plushie">
+          <div class="gear-name">From the Vault: Alpaca Plushie</div>
+          <div class="gear-extra">crée des bugs</div>
+          <button class="copy-btn" onclick="copyId(this, 'Ne Pas Utiliser')">Ne Pas Utiliser</button>
+          <div class="copied-msg" style="color: var(--error);">⛔ Interdit !</div>
+        </div>
+        <div class="gear-card">
+          <img src="https://static.robloxden.com/strapi/thumbnail_rainbow_periastron_omega_37d4649859" alt="Rainbow Periastron Omega">
+          <div class="gear-name">Rainbow Periastron Omega</div>
+          <div class="gear-extra">tue toute la map et fais  beaucoup de bruit</div>
+          <button class="copy-btn" onclick="copyId(this, 'Ne pas utiliser')">Ne Pas Utiliser</button>
+          <div class="copied-msg" style="color: var(--error);">⛔ Interdit !</div>
+        </div>
+        <div class="gear-card">
+          <img src="https://static.robloxden.com/strapi/thumbnail_noir_periastron_psi_e20f3318ff" alt="Noir Periastron Psi">
+          <div class="gear-name">Noir Periastron Psi</div>
+          <div class="gear-extra">tue toute la map et fais  beaucoup de bruit</div>
+          <button class="copy-btn" onclick="copyId(this, 'Ne pas utiliser')">Ne Pas Utiliser</button>
+          <div class="copied-msg" style="color: var(--error);">⛔ Interdit !</div>
+        </div>
+        <div class="gear-card">
+          <img src="https://static.robloxden.com/strapi/thumbnail_azure_periastron_alpha_cb1babf133" alt="Azure Periastron Alpha">
+          <div class="gear-name">Azure Periastron Alpha</div>
+          <div class="gear-extra">tue toute la map et fais  beaucoup de bruit</div>
+          <button class="copy-btn" onclick="copyId(this, 'Ne pas utiliser')">Ne Pas Utiliser</button>
+          <div class="copied-msg" style="color: var(--error);">⛔ Interdit !</div>
+        </div>
+        <div class="gear-card">
+          <img src="https://static.robloxden.com/robloxden-strapi/thumbnail_crimson_periastron_mu_b15de57e2a" alt="Crimson Periastron Mu">
+          <div class="gear-name">Crimson Periastron Mu</div>
+          <div class="gear-extra">tue toute la map et fais  beaucoup de bruit</div>
+          <button class="copy-btn" onclick="copyId(this, 'Ne pas utiliser')">Ne Pas Utiliser</button>
+          <div class="copied-msg" style="color: var(--error);">⛔ Interdit !</div>
+        </div>
+        <div class="gear-card">
+          <img src="https://static.robloxden.com/strapi/thumbnail_grimgold_periastron_beta_a97b7bf652" alt="Grimgold Periastron Beta">
+          <div class="gear-name">Grimgold Periastron Beta</div>
+          <div class="gear-extra">tue toute la map et fais  beaucoup de bruit</div>
+          <button class="copy-btn" onclick="copyId(this, 'Ne pas utiliser')">Ne Pas Utiliser</button>
+          <div class="copied-msg" style="color: var(--error);">⛔ Interdit !</div>
+        </div>
+        <div class="gear-card">
+          <img src="https://static.robloxden.com/strapi/thumbnail_ivory_periastron_5cc93ee0e9" alt="Ivory Periastron">
+          <div class="gear-name">Ivory Periastron</div>
+          <div class="gear-extra">tue toute la map et fais  beaucoup de bruit</div>
+          <button class="copy-btn" onclick="copyId(this, 'Ne pas utiliser')">Ne Pas Utiliser</button>
+          <div class="copied-msg" style="color: var(--error);">⛔ Interdit !</div>
+        </div>
+
+        <div class="gear-card">
+          <img src="https://static.robloxden.com/strapi/thumbnail_amethyst_periastron_kappa_75fe757c05" alt="Amethyst Periastron Kappa">
+          <div class="gear-name">Amethyst Periastron Kappa</div>
+          <div class="gear-extra">tue toute la map et fais  beaucoup de bruit</div>
+          <button class="copy-btn" onclick="copyId(this, 'Ne pas utiliser')">Ne Pas Utiliser</button>
+          <div class="copied-msg" style="color: var(--error);">⛔ Interdit !</div>
+        </div>
+        <div class="gear-card">
+          <img src="https://static.robloxden.com/strapi/thumbnail_fake_chartreuse_periastron_gamma_2b24dc778c" alt="Fake Chartreuse Periastron Gamma ">
+          <div class="gear-name">Fake Chartreuse Periastron Gamma </div>
+          <div class="gear-extra">tue toute la map et fais  beaucoup de bruit</div>
+          <button class="copy-btn" onclick="copyId(this, 'Ne pas utiliser')">Ne Pas Utiliser</button>
+          <div class="copied-msg" style="color: var(--error);">⛔ Interdit !</div>
+        </div>
+        <div class="gear-card">
+          <img src="https://static.robloxden.com/strapi/thumbnail_fall_periastron_xi_c08b3a10d6" alt="Fall Periastron Xi">
+          <div class="gear-name">Fall Periastron Xi</div>
+          <div class="gear-extra">tue toute la map et fais  beaucoup de bruit</div>
+          <button class="copy-btn" onclick="copyId(this, 'Ne pas utiliser')">Ne Pas Utiliser</button>
+          <div class="copied-msg" style="color: var(--error);">⛔ Interdit !</div>
+        </div>
+        <div class="gear-card">
+          <img src="https://static.robloxden.com/strapi/thumbnail_chartreuse_periastron_gamma_da9c6ef825" alt="Chartreuse Periastron Gamma">
+          <div class="gear-name">Chartreuse Periastron Gamma</div>
+          <div class="gear-extra">tue toute la map et fais  beaucoup de bruit</div>
+          <button class="copy-btn" onclick="copyId(this, 'Ne pas utiliser')">Ne Pas Utiliser</button>
+          <div class="copied-msg" style="color: var(--error);">⛔ Interdit !</div>
+        </div>
+        <div class="gear-card">
+          <img src="https://static.robloxden.com/strapi/thumbnail_joyful_periastron_epsilon_678c74df66" alt="Joyful Periastron Epsilon">
+          <div class="gear-name">Joyful Periastron Epsilon</div>
+          <div class="gear-extra">tue toute la map et fais  beaucoup de bruit</div>
+          <button class="copy-btn" onclick="copyId(this, 'Ne pas utiliser')">Ne Pas Utiliser</button>
+          <div class="copied-msg" style="color: var(--error);">⛔ Interdit !</div>
+        </div>
+        <div class="gear-card">
+          <img src="https://static.robloxden.com/strapi/thumbnail_festive_periastron_chi_1e3c8b9265" alt="Festive Periastron Chi">
+          <div class="gear-name">Festive Periastron Chi</div>
+          <div class="gear-extra">tue toute la map et fais  beaucoup de bruit</div>
+          <button class="copy-btn" onclick="copyId(this, 'Ne pas utiliser')">Ne Pas Utiliser</button>
+          <div class="copied-msg" style="color: var(--error);">⛔ Interdit !</div>
+        </div>
+        <div class="gear-card">
+          <img src="https://static.robloxden.com/strapi/thumbnail_rocket_launcher_693578d522" alt="Rocket Launcher">
+          <div class="gear-name">Rocket Launcher</div>
+          <div class="gear-extra">Explose la map</div>
+          <button class="copy-btn" onclick="copyId(this, 'Ne pas utiliser')">Ne Pas Utiliser</button>
+          <div class="copied-msg" style="color: var(--error);">⛔ Interdit !</div>
+        </div>
+        <div class="gear-card">
+          <img src="https://static.robloxden.com/strapi/thumbnail_personal_ufo_e304513c4f" alt="Personal UFO">
+          <div class="gear-name">Personal UFO</div>
+          <div class="gear-extra">Fais du bruit dans toute la map</div>
+          <button class="copy-btn" onclick="copyId(this, 'Ne pas utiliser')">Ne Pas Utiliser</button>
+          <div class="copied-msg" style="color: var(--error);">⛔ Interdit !</div>
+        </div>
+        <div class="gear-card">
+          <img src="https://static.robloxden.com/strapi/thumbnail_pompous_the_cloud_ff4f107c19" alt="Pompous, the Cloud">
+          <div class="gear-name">Pompous, the Cloud</div>
+          <div class="gear-extra">Fais trop de bruit</div>
+          <button class="copy-btn" onclick="copyId(this, 'Ne pas utiliser')">Ne Pas Utiliser</button>
+          <div class="copied-msg" style="color: var(--error);">⛔ Interdit !</div>
+        </div>
+        <div class="gear-card">
+          <img src="https://static.robloxden.com/strapi/thumbnail_bo_staff_fa63e92234" alt="Bo Staff">
+          <div class="gear-name">Bo Staff</div>
+          <div class="gear-extra">Fais reset a l'infini les joueurs</div>
+          <button class="copy-btn" onclick="copyId(this, 'Ne pas utiliser')">Ne Pas Utiliser</button>
+          <div class="copied-msg" style="color: var(--error);">⛔ Interdit !</div>
+        </div>
+        <div class="gear-card">
+          <img src="https://static.robloxden.com/strapi/thumbnail_flashbang_64baaae755" alt="Flashbang">
+          <div class="gear-name">Flashbang</div>
+          <div class="gear-extra">Fais mal aux yeux</div>
+          <button class="copy-btn" onclick="copyId(this, 'Ne pas utiliser')">Ne Pas Utiliser</button>
+          <div class="copied-msg" style="color: var(--error);">⛔ Interdit !</div>
+        </div>
+        <div class="gear-card">
+          <img src="https://static.robloxden.com/strapi/thumbnail_deluxe_rainbow_magic_carpet_e60e749358" alt="Deluxe Rainbow Magic Carpet">
+          <div class="gear-name">Deluxe Rainbow Magic Carpet</div>
+          <div class="gear-extra">Lumière aveuglante, et trails qui fait lag</div>
+          <button class="copy-btn" onclick="copyId(this, 'Ne pas utiliser')">Ne Pas Utiliser</button>
+          <div class="copied-msg" style="color: var(--error);">⛔ Interdit !</div>
+        </div>
+        <div class="gear-card">
+          <img src="https://static.robloxden.com/strapi/thumbnail_ice_dragon_slayer_24ae8bd652" alt="Ice Dragon Slayer">
+          <div class="gear-name">Ice Dragon Slayer</div>
+          <div class="gear-extra">Aura qui fait bug et bcp trop puissant</div>
+          <button class="copy-btn" onclick="copyId(this, 'Ne pas utiliser')">Ne Pas Utiliser</button>
+          <div class="copied-msg" style="color: var(--error);">⛔ Interdit !</div>
+        </div>
+        <div class="gear-card">
+          <img src="https://static.robloxden.com/strapi/thumbnail_lightblox_jar_5735db8207" alt="Lightblox Jar">
+          <div class="gear-name">Lightblox Jar</div>
+          <div class="gear-extra">Créer des parts qui restent et qui volent</div>
+          <button class="copy-btn" onclick="copyId(this, 'Ne pas utiliser')">Ne Pas Utiliser</button>
+          <div class="copied-msg" style="color: var(--error);">⛔ Interdit !</div>
+        </div>
+        <div class="gear-card">
+          <img src="https://static.robloxden.com/strapi/thumbnail_r_80_b8a46cd999" alt="R-80">
+          <div class="gear-name">R-80</div>
+          <div class="gear-extra">Explosion de la map</div>
+          <button class="copy-btn" onclick="copyId(this, 'Ne pas utiliser')">Ne Pas Utiliser</button>
+          <div class="copied-msg" style="color: var(--error);">⛔ Interdit !</div>
+        </div>
+        <div class="gear-card">
+          <img src="https://static.robloxden.com/strapi/thumbnail_historic_timmy_gun_18d335848c" alt="Historic 'Timmy' Gun">
+          <div class="gear-name">Historic 'Timmy' Gun</div>
+          <div class="gear-extra">Fais lag</div>
+          <button class="copy-btn" onclick="copyId(this, 'Ne pas utiliser')">Ne Pas Utiliser</button>
+          <div class="copied-msg" style="color: var(--error);">⛔ Interdit !</div>
+        </div>
+        <div class="gear-card">
+          <img src="https://static.robloxden.com/strapi/thumbnail_korblox_mage_staff_6b186eee4b" alt="Korblox Mage Staff">
+          <div class="gear-name">Korblox Mage Staff</div>
+          <div class="gear-extra">Créer des parts en masse + bug + kill</div>
+          <button class="copy-btn" onclick="copyId(this, 'Ne pas utiliser')">Ne Pas Utiliser</button>
+          <div class="copied-msg" style="color: var(--error);">⛔ Interdit !</div>
+        </div>
+        <div class="gear-card">
+          <img src="https://static.robloxden.com/strapi/thumbnail_black_hole_bomb_5968a6571b" alt="Black Hole Bomb">
+          <div class="gear-name">Black Hole Bomb</div>
+          <div class="gear-extra">Nuage rouge chiant</div>
+          <button class="copy-btn" onclick="copyId(this, 'Ne pas utiliser')">Ne Pas Utiliser</button>
+          <div class="copied-msg" style="color: var(--error);">⛔ Interdit !</div>
+        </div>
+        <div class="gear-card">
+          <img src="https://static.robloxden.com/strapi/thumbnail_the_midas_glove_9b9361492e" alt="The Midas Glove">
+          <div class="gear-name">The Midas Glove</div>
+          <div class="gear-extra">Détruit la map, laisse des parts</div>
+          <button class="copy-btn" onclick="copyId(this, 'Ne pas utiliser')">Ne Pas Utiliser</button>
+          <div class="copied-msg" style="color: var(--error);">⛔ Interdit !</div>
+        </div>
+        <div class="gear-card">
+          <img src="https://static.robloxden.com/strapi/thumbnail_banana_peel_d63fb49691" alt="Banana Peel">
+          <div class="gear-name">Banana Peel</div>
+          <div class="gear-extra">Reste sur la map impossible a retirer</div>
+          <button class="copy-btn" onclick="copyId(this, 'Ne pas utiliser')">Ne Pas Utiliser</button>
+          <div class="copied-msg" style="color: var(--error);">⛔ Interdit !</div>
+        </div>
+        <div class="gear-card">
+          <img src="https://static.robloxden.com/strapi/thumbnail_roblox_skateboard_86f03f0d60" alt="ROBLOX Skateboard">
+          <div class="gear-name">ROBLOX Skateboard</div>
+          <div class="gear-extra">Bruit , impossible a sortir du gear (doit reset obligatoirement) et ne peut pas être retirer</div>
+          <button class="copy-btn" onclick="copyId(this, 'Ne pas utiliser')">Ne Pas Utiliser</button>
+          <div class="copied-msg" style="color: var(--error);">⛔ Interdit !</div>
+        </div>
+        <div class="gear-card">
+          <img src="https://static.robloxden.com/strapi/thumbnail_bundle_of_tnt_fb69fc303b" alt="Bundle of TNT">
+          <div class="gear-name">Bundle of TNT</div>
+          <div class="gear-extra">Explose la map</div>
+          <button class="copy-btn" onclick="copyId(this, 'Ne pas utiliser')">Ne Pas Utiliser</button>
+          <div class="copied-msg" style="color: var(--error);">⛔ Interdit !</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="event">
+      <h2>💠 Gears Pour les Events seulement</h2>
+      <div class="gear-list">
+        <div class="gear-card">
+          <img src="https://static.robloxden.com/strapi/thumbnail_hot_potato_e89b5ac184" alt="Hot Potato">
+          <div class="gear-name">Hot Potato</div>
+          <div class="gear-extra">patate Chaude</div>
+          <div class="gear-id">ID: 25741198</div>
+          <button class="copy-btn" onclick="copyId(this, '25741198')">Copier l'ID</button>
+          <div class="copied-msg">✅ ID copié !</div>
+        </div>
+        <div class="gear-card">
+          <img src="https://static.robloxden.com/strapi/thumbnail_healing_potion_89196e3686" alt="Healing Potion">
+          <div class="gear-name">Healing Potion</div>
+          <div class="gear-extra">Potion de soin</div>
+          <div class="gear-id">ID: 11419319</div>
+          <button class="copy-btn" onclick="copyId(this, '11419319')">Copier l'ID</button>
+          <div class="copied-msg">✅ ID copié !</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="reglement">
+      <h2>📜 Règlement</h2>
+      <div class="regulations-content">
+        <h3>1 Assistance et signalement</h3>
+        <ul>
+          <li>Si vous rencontrez un problème en jeux, faites la commande “!help" dans le chat.</li>
+          <li>Vous devez faire un "!help" en cas de nécessité immédiate ou d'une question pertinente, si le modérateur juge que le ticket est inutile, vous vous engagez à des sanctions.</li>
+          <li>Si aucun modérateur n'est disponible, vous pouvez également contacter notre équipe via le serveur communautaire.</li>
+        </ul>
+
+        <h3>2 Règles générale</h3>
+        <ul>
+          <li>Le respect est obligatoire envers les autres joueurs et l'équipe de Center French. Tout comportement insultant, diffamatoire ou provocateur sera sanctionné.</li>
+          <li>Les propos racistes, homophobes, sexistes, ou discriminatoires sont strictement interdits et seront sévèrement et immédiatement sanctionnés.</li>
+          <li>Contourner une sanction de quelque manière que ce soit sera conduite à l'annulation de toute demande d'appel de sanction et pourra également allonger votre sanction.</li>
+          <li>Tout sujet illégal et ne respectant pas les lois françaises sera puni d'une sanction très sévère et immédiate.</li>
+          <li>Un skin approprié vous est demandé, le modérateur par sa propre appréciation peut demander au joueur de changer ou d'enlever le skin.</li>
+        </ul>
+
+        <h3>3 Comportement en jeux</h3>
+        <ul>
+          <li>Respectez les opinions des autres joueurs et joueuses, que ce soit dans le chat textuel ou vocal.</li>
+          <li>L'utilisation d'exploit ou de bugs considéré par le modérateur, comme dérangeant sera sanctionné immédiatement.</li>
+          <li>Les soundboard sont tolérés, mais si un membre de la modération considère que cela dérange les joueurs, vous devez l'arrêter sous peine de sanctions, de plus, la modération se donne le droit de stopper quiconque utilise des soundboard, cela vient à la responsabilité du joueur.</li>
+          <li>La demande excessive de gears est punissable.</li>
+          <li>Les sujets ou les débats à caractère politique sont tolérés, mais la modération peut se donner le droit de stopper le débat.</li>
+        </ul>
+      </div>
+    </section>
+
+    <div id="noResultsMessage">Nom invalide ou gear non répertorié</div>
+
+    <script>
+      function copyId(button, id) {
+        const msg = button.nextElementSibling;
+        const originalMsgColor = msg.style.color;
+        const originalMsgText = msg.textContent;
+
+        if (id.toLowerCase().includes('ne pas utiliser')) {
+          msg.textContent = "⛔ Interdit !";
+          msg.style.color = 'var(--error)';
+          msg.style.display = "block";
+          setTimeout(() => {
+            msg.style.display = "none";
+            msg.textContent = originalMsgText;
+            msg.style.color = originalMsgColor;
+          }, 2500);
+          return;
+        }
+
+        const tempInput = document.createElement('textarea');
+        tempInput.value = id;
+        document.body.appendChild(tempInput);
+        tempInput.select();
+        try {
+          document.execCommand('copy');
+          msg.style.display = "block";
+          setTimeout(() => {
+            msg.style.display = "none";
+          }, 2500);
+        } catch (err) {
+            console.error('Failed to copy ID: ', err);
+            const customAlert = document.createElement('div');
+            customAlert.style.cssText = `
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background-color: #333;
+                color: #fff;
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: 0 0 20px rgba(0,0,0,0.5);
+                z-index: 9999;
+                font-family: 'Rajdhani', sans-serif;
+                font-size: 18px;
+                text-align: center;
+            `;
+            customAlert.textContent = "Erreur lors de la copie de l'ID. Veuillez copier manuellement : " + id;
+            document.body.appendChild(customAlert);
+            setTimeout(() => {
+                document.body.removeChild(customAlert);
+            }, 3000);
+        } finally {
+            document.body.removeChild(tempInput);
+        }
+      }
+
+      const navLinks = document.querySelectorAll('.nav-center a');
+      const sections = Array.from(navLinks).map(link => document.querySelector(link.getAttribute('href')));
+      const allSections = document.querySelectorAll('section');
+      const noResultsMessage = document.getElementById('noResultsMessage');
+
+      function setActiveLink() {
+          let scrollPos = window.scrollY + window.innerHeight / 2;
+
+          sections.forEach((section, index) => {
+              if (section && section.offsetTop <= scrollPos && (section.offsetTop + section.offsetHeight) > scrollPos) {
+                  navLinks.forEach(link => link.classList.remove('active'));
+                  navLinks[index].classList.add('active');
+              }
+          });
+      }
+
+      window.addEventListener('scroll', setActiveLink);
+      window.addEventListener('load', setActiveLink);
+      document.addEventListener('DOMContentLoaded', setActiveLink);
+
+      const searchInput = document.getElementById('searchInput');
+
+      searchInput.addEventListener('input', function() {
+        const searchTerm = this.value.toLowerCase();
+        let totalMatches = 0;
+
+        allSections.forEach(section => {
+          let sectionHasMatch = false;
+          if (section.id !== 'reglement') {
+            const gearCardsInSection = section.querySelectorAll('.gear-card');
+
+            gearCardsInSection.forEach(card => {
+              const gearName = card.querySelector('.gear-name')?.textContent.toLowerCase() || '';
+              const gearExtra = card.querySelector('.gear-extra')?.textContent.toLowerCase() || '';
+              const gearId = card.querySelector('.gear-id')?.textContent.toLowerCase() || '';
+
+              if (gearName.includes(searchTerm) || gearExtra.includes(searchTerm) || gearId.includes(searchTerm)) {
+                card.style.display = 'flex';
+                sectionHasMatch = true;
+                totalMatches++;
+              } else {
+                card.style.display = 'none';
+              }
+            });
+          } else {
+            section.style.display = 'none';
+          }
+
+
+          if (searchTerm === '') {
+            section.style.display = 'block';
+            if (section.id !== 'reglement') {
+                section.querySelectorAll('.gear-card').forEach(card => card.style.display = 'flex');
+            }
+          } else {
+            if (section.id !== 'reglement') {
+                if (sectionHasMatch) {
+                    section.style.display = 'block';
+                } else {
+                    section.style.display = 'none';
+                }
+            } else {
+                section.style.display = 'none';
+            }
+          }
+        });
+
+        if (searchTerm !== '' && totalMatches === 0) {
+          noResultsMessage.style.display = 'block';
+        } else {
+          noResultsMessage.style.display = 'none';
+        }
+      });
+    </script>
+
+  </body>
 </html>
